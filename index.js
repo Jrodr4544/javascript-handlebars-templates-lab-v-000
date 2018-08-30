@@ -5,9 +5,8 @@ function init() {
   Handlebars.registerPartial('recipeFormPartial', document.getElementById('recipe-form-partial').innerHTML);
   Handlebars.registerHelper('displayIngredient', (ingredient) => {
     return new Handlebars.SafeString(
-      '<li>'
-      + ingredient.value
-      + '</li>');
+	    '<ol>'+ingredient.value+'</ol>'
+	    );
   });
   
   var formInitializer = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML); 
@@ -34,7 +33,7 @@ function displayEditForm() {
 	  'createRecipe': 'updateRecipe()',
 	  name: document.getElementById('recipe-name').innerHTML,
 	  description: document.getElementById('recipe-description').innerHTML,
-	  ingredients: document.getElementsByTagName('li')
+	  ingredients: document.getElementsByTagName('ol')
   }
 
   var editForm = Handlebars.compile(document.getElementById("recipe-form-template").innerHTML);
